@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متعاونين على التفوق - تحدي السرعة الحقيقي 2009</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #e0e5ec 0%, #f0f4f8 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 50px;
+            padding: 35px;
+            box-shadow: 
+                20px 20px 40px rgba(0, 0, 0, 0.05),
+                -10px -10px 30px rgba(255, 255, 255, 0.8),
+                inset 2px 2px 5px rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 3.2em;
+            font-weight: 800;
+            color: #2c3e50;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .game-title {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: #f1c40f;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+            padding: 8px 25px;
+            border-radius: 60px;
+            display: inline-block;
+            border: 2px solid #f1c40f40;
+            margin: 10px 0;
+            background: #fef9e7;
+            letter-spacing: 1px;
+        }
+
+        .student-name {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #5d6d7e;
+            margin-top: 15px;
+            padding: 8px 25px;
+            background: #f8f9fa;
+            border-radius: 40px;
+            display: inline-block;
+            border: 1px solid #e9ecef;
+        }
+
+        .setup-section {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 40px;
+            margin-bottom: 25px;
+            border: 1px solid #e9ecef;
+        }
+
+        .setup-section h3 {
+            font-size: 1.8em;
+            color: #34495e;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #566573;
+            font-weight: 600;
+            font-size: 1.2em;
+        }
+
+        .input-group input {
+            width: 180px;
+            padding: 15px 20px;
+            border: 2px solid #d5dbdb;
+            border-radius: 50px;
+            font-size: 1.8em;
+            font-weight: 700;
+            text-align: center;
+            background: white;
+            transition: all 0.2s;
+            color: #2c3e50;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #f1c40f;
+            background: #fef9e7;
+        }
+
+        .note-box {
+            background: #fef9e7;
+            border: 2px solid #f9e79f;
+            border-radius: 35px;
+            padding: 20px;
+            margin: 25px 0;
+            color: #7d6608;
+            font-size: 1.2em;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .note-box p {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .note-box p::before {
+            content: "📘";
+            font-size: 2em;
+        }
+
+        .quiz-area {
+            margin-top: 20px;
+        }
+
+        .question-box {
+            background: #ffffff;
+            border-radius: 35px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid #e9ecef;
+        }
+
+        .timer {
+            font-size: 4em;
+            font-weight: 700;
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 60px;
+            border: 2px solid #e9ecef;
+        }
+
+        .timer.warning {
+            color: #e67e22;
+            background: #fef5e7;
+            border-color: #f9e79f;
+            animation: gentlePulse 1s infinite;
+        }
+
+        @keyframes gentlePulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .question-text {
+            font-size: 1.6em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 25px;
+            line-height: 1.6;
+        }
+
+        .options {
+            display: grid;
+            gap: 12px;
+        }
+
+        .option {
+            padding: 18px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1.2em;
+            font-weight: 500;
+            text-align: center;
+            color: #34495e;
+        }
+
+        .option:hover {
+            background: #e9ecef;
+            border-color: #d5dbdb;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+            font-weight: 600;
+        }
+
+        .subject-badge {
+            display: inline-block;
+            padding: 6px 18px;
+            background: #e9ecef;
+            color: #2c3e50;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border: 1px solid #d5dbdb;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .nav-btn {
+            flex: 1;
+            padding: 15px 20px;
+            font-size: 1.2em;
+            font-weight: 600;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            color: #34495e;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: #e9ecef;
+            border-color: #d5dbdb;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .start-btn {
+            background: #f1c40f;
+            color: #2c3e50;
+            border: none;
+            padding: 18px 35px;
+            font-size: 1.8em;
+            font-weight: 700;
+            border-radius: 60px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s;
+            border: 2px solid #f39c12;
+            box-shadow: 0 5px 0 #d4ac0d;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 0 #d4ac0d;
+        }
+
+        .start-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 #d4ac0d;
+        }
+
+        .results-section {
+            text-align: center;
+        }
+
+        .result-card {
+            background: #f8fafc;
+            border-radius: 40px;
+            padding: 35px;
+            margin: 20px 0;
+            border: 1px solid #e9ecef;
+        }
+
+        .score {
+            font-size: 4em;
+            font-weight: 800;
+            color: #27ae60;
+            margin: 10px 0;
+        }
+
+        .percentage-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: conic-gradient(#27ae60 0deg, #27ae60 270deg, #e67e22 270deg);
+            margin: 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2em;
+            font-weight: 700;
+            color: white;
+            border: 6px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .answers-review {
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 25px;
+            margin-top: 25px;
+            border: 1px solid #e9ecef;
+        }
+
+        .answer-item {
+            padding: 18px;
+            border-bottom: 1px solid #e9ecef;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .answer-item.correct {
+            background: #d4edda;
+            border-right: 6px solid #27ae60;
+        }
+
+        .answer-item.incorrect {
+            background: #fef5e7;
+            border-right: 6px solid #e67e22;
+        }
+
+        .answer-item .subject-review {
+            display: inline-block;
+            padding: 4px 15px;
+            background: #34495e;
+            color: white;
+            border-radius: 25px;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .progress {
+            width: 100%;
+            height: 20px;
+            background: #e9ecef;
+            border-radius: 30px;
+            margin: 15px 0;
+            overflow: hidden;
+            border: 1px solid #d5dbdb;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #f1c40f;
+            transition: width 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2c3e50;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .question-counter {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="app">
+        <div class="header">
+            <h1>متعاونين على التفوق</h1>
+            <div class="game-title">⚡ تحدي السرعة الحقيقي 2009 ⚡</div>
+            <div class="student-name">عبدالرحمن المعايطه</div>
+        </div>
+
+        <!-- Setup Screen -->
+        <div id="setupScreen">
+            <div class="setup-section">
+                <h3>🎯 إعدادات التحدي</h3>
+                <div class="input-group">
+                    <label>عدد الأسئلة (1 - 50)</label>
+                    <input type="number" id="questionCount" min="1" max="50" value="10">
+                </div>
+                
+                <div class="note-box">
+                    <p>سوف يظهر لك الموقع أسئلة عشوائية من جميع المواد الوزارية (إنجليزي، عربي، تاريخ، تربية إسلامية)</p>
+                </div>
+
+                <button class="start-btn" onclick="startQuiz()">🚀 ابدأ التحدي</button>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quizScreen" class="hidden">
+            <div class="quiz-area">
+                <div class="question-counter" id="questionCounter">السؤال 1 من 10</div>
+                
+                <div class="progress">
+                    <div class="progress-bar" id="progressBar">0%</div>
+                </div>
+                
+                <div class="timer" id="timer">40</div>
+                
+                <div class="question-box">
+                    <div id="subjectDisplay" class="subject-badge"></div>
+                    <div class="question-text" id="question"></div>
+                    <div class="options" id="options"></div>
+                    
+                    <div class="navigation-buttons">
+                        <button class="nav-btn prev-btn" id="prevBtn" onclick="goToPrevQuestion()" disabled>
+                            ⬅️ السابق
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="hidden">
+            <div class="results-section">
+                <h2 style="font-size: 2.5em; color: #2c3e50; margin-bottom: 20px;">📊 نتيجتك في التحدي</h2>
+                <div class="result-card">
+                    <div class="score" id="finalScore">0/0</div>
+                    <div class="percentage-circle" id="percentageCircle">0%</div>
+                    <p style="font-size: 1.3em; color: #5d6d7e; margin-top: 20px;">نسبة النجاح: <span id="percentage">0%</span></p>
+                </div>
+                
+                <div class="answers-review" id="answersReview"></div>
+                
+                <button class="start-btn" onclick="resetQuiz()" style="margin-top: 20px;">🔄 تحدٍ جديد</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Combined questions database (204 سؤال)
+        const questionsDatabase = [
+            // ENGLISH QUESTIONS (28)
+            {
+                question: "I am completely ............ about my exam results – I never thought I’d do so well!",
+                options: ["inspirational", "slimy", "ecstatic", "hypocritical"],
+                correct: 2,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "We couldn't use our mobile phones in the desert, but started to............ signals when we went into the mountains.",
+                options: ["show off", "pick up", "point out", "calm down"],
+                correct: 1,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "It is claimed that ............ from cars kill twice as many people as accidents caused by vehicles.",
+                options: ["wind turbines", "fossil fuels", "endangered species", "exhaust fumes"],
+                correct: 3,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "Tigers – the largest living cats on Earth – are at the top of their food chain so they have no ............ predators.",
+                options: ["torrential", "scorching", "bewildered", "natural"],
+                correct: 3,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "Rami ............; whenever arguments happen, he resolves conflicts.",
+                options: ["blows things out of proportion", "spells out", "is the peacemaker", "bursts into tears"],
+                correct: 2,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "Rawan is so ............; she's determined to get what she wants.",
+                options: ["pushy", "immature", "modest", "decent"],
+                correct: 0,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "I have two lamps in my bedroom. My father always asks me to ............ before going to bed.",
+                options: ["switch off them", "switch them off", "off them switch", "them switch off"],
+                correct: 1,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "The underlined words (a bit) in: 'Summer in Singapore is... only a bit hotter than in Egypt' can be replaced with:",
+                options: ["nothing like", "slightly", "considerably", "a lot"],
+                correct: 1,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "Harmful chemicals, fertilisers, and pollution would ............ fresh water supplies.",
+                options: ["provide", "contaminate", "install", "clarify"],
+                correct: 1,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "Keep your argument simple and try not to ............ it.",
+                options: ["complicated", "complication", "complicating", "complicate"],
+                correct: 3,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "............ and other wearables... could be used to track your body’s fat and water content.",
+                options: ["Malfunction", "Smart devices", "Household appliance", "Glitches"],
+                correct: 1,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "It was a huge ............ and I didn't get the marks I needed to go to that university.",
+                options: ["flourish", "blunder", "masterstroke", "affluent"],
+                correct: 1,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "The correct binomial that can replace 'At some point' in: 'At some point, you will have to make a decision' is:",
+                options: ["Sooner or later", "More or less", "Touch and go", "Ups and downs"],
+                correct: 0,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "Don't make a mess, ............?",
+                options: ["will you", "may you", "can you", "do you"],
+                correct: 0,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "I forgot my password and ............ my email account the day before yesterday.",
+                options: ["have blocked", "was blocked", "has blocked", "blocked"],
+                correct: 3,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "The shopping centre ............ at 10 a.m. every morning.",
+                options: ["was opened", "opens", "had opened", "open"],
+                correct: 1,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "By the time we reach the entrance, we ............ for three hours!",
+                options: ["were going to wait", "had been waited", "will have been waiting", "would have been waiting"],
+                correct: 2,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "A: 'Jameel is thinking of travelling again.' B: 'Yes, well, he ............ stay in one place for more than a few months.'",
+                options: ["will", "would", "won't", "wouldn't"],
+                correct: 2,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "The sentence that has the correct participle clause of: 'The flip phone, which was designed in the 1990s, is rapidly becoming popular again.' is:",
+                options: ["The flip phone, designed in the 1990s, is rapidly becoming popular again.", "The flip phone, was designed in the 1990s, is rapidly becoming popular again.", "The flip phone, is designed in the 1990s, is rapidly becoming popular again.", "The flip phone, designing in the 1990s, is rapidly becoming popular again."],
+                correct: 0,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "People driving a car ............ carry a driving licence.",
+                options: ["don't have to", "are required to", "are forbidden to", "need not"],
+                correct: 1,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "We should spend less on ............ clothes and more on ............ healthy food.",
+                options: ["a / an", "the / Ø", "an / Ø", "Ø / Ø"],
+                correct: 3,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "The police praised Imad ............ saving the man's life.",
+                options: ["on", "of", "for", "into"],
+                correct: 2,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "The reported speech of: Adel: 'I didn't steal the woman's necklace.' is:",
+                options: ["Adel denied stealing the woman's necklace.", "Adel regretted stealing the woman's necklace.", "Adel suggested stealing the woman's necklace.", "Adel recommended stealing the woman's necklace."],
+                correct: 0,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "Young people don't need ............ how to use new devices, they just know instinctively.",
+                options: ["be told", "being told", "been told", "to be told"],
+                correct: 3,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "The correct passive form of: 'Somebody was regularly hacking into celebrities’ smartphones.' is:",
+                options: ["Celebrities’ smartphones are being regularly hacked into.", "Celebrities’ smartphones were being regularly hacked into.", "Celebrities’ smartphones have been regularly hacked into.", "Celebrities’ smartphones had been regularly hacked into."],
+                correct: 1,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "I wish I ............ sciences at school, but it’s too late now.",
+                options: ["had studied", "wouldn't study", "have studied", "don't study"],
+                correct: 0,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "The correct grammatical function of: 'If I'd gone to university, I would have a better job.' is:",
+                options: ["past consequences of a hypothetical present situation.", "present consequences of a hypothetical present situation.", "present consequences of a hypothetical past situation.", "past consequences of a hypothetical past situation."],
+                correct: 2,
+                subject: "🇬🇧 إنجليزي"
+            },
+            {
+                question: "The letter ( a ) in the word (start) is pronounced the same as in the word .............",
+                options: ["hat", "packing", "hard", "jam"],
+                correct: 2,
+                subject: "🇬🇧 إنجليزي"
+            },
+            // ARABIC QUESTIONS (56) - SAMPLE
+            {
+                question: "معنى (تُؤْفَكُونَ) في قوله تعالى: ﴿ذَٰلِكُمُ اللَّهُ ۖ فَأَنَّىٰ تُؤْفَكُونَ﴾ هو:",
+                options: ["تُسِيئُونَ إِلَى الْآخَرِينَ", "تُصَدُّونَ عَنِ السَّبِيلِ", "تَرْجُونَ اللهَ تَعَالَى", "تَمْتَنِعُونَ عَنِ المَعَاصِي"],
+                correct: 1,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "المعنى البلاغي الذي خرج إليه الاستفهام في قوله تعالى: ﴿وَمَنْ أَحْسَنُ قَوْلًا مِمَّنْ دَعَا إِلَى اللَّهِ وَعَمِلَ صَالِحًا﴾ هو:",
+                options: ["النَّفْي", "التَّهْوِيل", "الإِنْكَار", "التَّمَنِّي"],
+                correct: 0,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "وصَفَ الشاعرُ مدينة عمان في البيت الشعري (باحتْ بأحلامِنا النَّجوى وردَّدَها / واديكِ، وانطلقتْ خلفَ البِطاحِ رُبى) بأنها:",
+                options: ["متنوعة التضاريس", "صامدة رغم التحديات", "مركز الحضارة", "متبخترة ومتمايلة في المَشْي"],
+                correct: 0,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "المرادف الذي يؤدي معنى (الخوف الشديد) في نص (الزهايمر):",
+                options: ["فقدان الذاكرة وهذيان", "الفقدان المطرد للذاكرة", "الهَلْوَسَة", "هَلَع وصُراخ"],
+                correct: 3,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "المقصود بالعبارة (وتاريخ البشرية من عصور نقش الأحجار إلى بث الأقمار...) من نص (الإعلام ومشروع النهوض):",
+                options: ["بيان دور الأقمار الصناعية في تطور وسائل الاتصال", "مرافقة الإعلام ووسائل الاتصال للإنسان منذ وجوده", "اهتمام الإنسان بوسائل الاتصال في زمن الأقمار الصناعية", "توضيح أثر وسائل الاتصال في نشوء مهن مثل نقش الأحجار"],
+                correct: 1,
+                subject: "🇸🇦 عربي"
+            },
+            // ISLAMIC QUESTIONS (40) - SAMPLE
+            {
+                question: "قول الله تعالى الذي يشير إلى الاعتبار من الأمم السابقة:",
+                options: ["﴿وَاعْتَصِمُوا بِحَبْلِ اللَّهِ جَمِيعًا وَلَا تَفَرَّقُوا﴾", "﴿وَلَا تَكُونُوا كَالَّذِينَ تَفَرَّقُوا وَاخْتَلَفُوا مِنْ بَعْدِ مَا جَاءَهُمُ الْبَيِّنَاتُ﴾", "﴿وَلْتَكُنْ مِنْكُمْ أُمَّةٌ يَدْعُونَ إِلَى الْخَيْرِ﴾", "﴿يَا أَيُّهَا الَّذِينَ آمَنُوا اتَّقُوا اللَّهَ حَقَّ تُقَاتِهِ﴾"],
+                correct: 1,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "يكون انتقاء الشبهات إذا أصابت النجاسة جزءاً من الثوب، ولم يعلم صاحبه موضعها بغسل:",
+                options: ["جزء من الثوب", "نصف الثوب", "أكثر الثوب", "الثوب كله"],
+                correct: 3,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "من صور الكفر العملي التي تخرج صاحبها من الإسلام:",
+                options: ["إنكار ركن من أركان الإيمان", "سب الذات الإلهية", "إنكار حكم قطعي معلوم من الدين بالضرورة", "قتال المسلم للمسلم"],
+                correct: 1,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "مبدأ الإسلام الذي دعا إليه قول الله تعالى: ﴿يَا أَيُّهَا النَّاسُ إِنَّا خَلَقْنَاكُمْ مِنْ ذَكَرٍ وَأُنْثَى...﴾:",
+                options: ["المساواة", "الأمن", "الحرية", "تسخير الكون"],
+                correct: 0,
+                subject: "🕋 تربية إسلامية"
+            },
+            // HISTORY QUESTIONS (80) - SAMPLE
+            {
+                question: "تبدأ عصور ما قبل التاريخ من نشأة الإنسان على الأرض حتى:",
+                options: ["بداية استخدام معدن البرونز", "بداية ظهور دويلات المدن", "بداية اختراع الكتابة", "بداية استخدام معدن النحاس"],
+                correct: 2,
+                subject: "🏛️ تاريخ"
+            },
+            {
+                question: "الترتيب الصحيح لأبرز الإنجازات الحضارية في العصور الحجرية:",
+                options: ["اكتشاف الزراعة وإنتاج الطعام، اكتشاف النار، اختراع الكتابة", "اكتشاف الزراعة وإنتاج الطعام، تدجين الحيوانات، اختراع الكتابة", "اختراع الكتابة، اكتشاف النار وصهر المعادن، تدجين الحيوانات", "اختراع الكتابة، تدجين الحيوانات، اكتشاف النار وصهر المعادن"],
+                correct: 0,
+                subject: "🏛️ تاريخ"
+            },
+            {
+                question: "واحدة مما يأتي تُعدّ صحيحة فيما يتعلق بمسلة ميشع:",
+                options: ["مذكور عليها أسماء ثلاثة ملوك عمونيين", "محفوظة في المتحف البريطاني", "توجد منها نُسخٌ أخرى موجودة في معظم المتاحف الأردنية", "نُقشت عليها أهم انتصارات وأعمال الملك كاموشيت"],
+                correct: 2,
+                subject: "🏛️ تاريخ"
+            },
+            {
+                question: "كل ما يأتي من أسباب اتخاذ الأنباط مدينة البترا عاصمة لهم، ما عدا:",
+                options: ["موقعها على الطرق التجارية", "موقعها الحصين بين الجبال", "قربها من ينابيع المياه", "بعدها عن ممالك الآشوريين والبابليين"],
+                correct: 3,
+                subject: "🏛️ تاريخ"
+            }
+        ];
+
+        // Shuffle function
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        let currentQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = [];
+        let timerInterval;
+        let timeLeft = 40;
+        let audioContext;
+        let selectedAnswers = []; // لتخزين إجابات المستخدم لكل سؤال
+
+        function initAudio() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        function playWarningSound() {
+            initAudio();
+            if (audioContext) {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.type = 'sine';
+                oscillator.frequency.value = 800;
+                gainNode.gain.value = 0.2;
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.15);
+            }
+        }
+
+        function startQuiz() {
+            const count = parseInt(document.getElementById('questionCount').value);
+            if (count < 1 || count > 50) {
+                alert('الرجاء إدخال عدد أسئلة بين 1 و 50');
+                return;
+            }
+
+            // Shuffle all questions and take 'count' of them
+            const shuffledAll = shuffleArray([...questionsDatabase]);
+            currentQuestions = shuffledAll.slice(0, count);
+            
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = [];
+            selectedAnswers = new Array(count).fill(null); // مصفوفة لتخزين الإجابات المختارة
+
+            document.getElementById('setupScreen').classList.add('hidden');
+            document.getElementById('quizScreen').classList.remove('hidden');
+            document.getElementById('resultsScreen').classList.add('hidden');
+
+            updateQuestionCounter();
+            showQuestion();
+        }
+
+        function updateQuestionCounter() {
+            const counter = document.getElementById('questionCounter');
+            counter.textContent = `السؤال ${currentQuestionIndex + 1} من ${currentQuestions.length}`;
+        }
+
+        function showQuestion() {
+            if (currentQuestionIndex >= currentQuestions.length) {
+                calculateFinalScore();
+                showResults();
+                return;
+            }
+
+            const question = currentQuestions[currentQuestionIndex];
+            
+            // Show subject badge
+            document.getElementById('subjectDisplay').textContent = question.subject;
+            
+            // Show question text
+            document.getElementById('question').textContent = question.question;
+            
+            const optionsDiv = document.getElementById('options');
+            optionsDiv.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'option';
+                if (selectedAnswers[currentQuestionIndex] === index) {
+                    optionDiv.classList.add('selected');
+                }
+                optionDiv.textContent = option;
+                optionDiv.onclick = () => selectAnswer(index);
+                optionsDiv.appendChild(optionDiv);
+            });
+
+            // Update progress bar
+            const answeredCount = selectedAnswers.filter(a => a !== null).length;
+            const progress = ((answeredCount) / currentQuestions.length) * 100;
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = progress + '%';
+            progressBar.textContent = Math.round(progress) + '%';
+
+            // Update prev button state
+            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+
+            // Reset and start timer
+            if (timerInterval) {
+                clearInterval(timerInterval);
+            }
+            timeLeft = 40;
+            updateTimer();
+            startTimer();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimer();
+
+                if (timeLeft <= 7 && timeLeft >= 1) {
+                    playWarningSound();
+                }
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    // If no answer selected, mark as wrong
+                    if (selectedAnswers[currentQuestionIndex] === null) {
+                        selectedAnswers[currentQuestionIndex] = -1; // علامة للخطأ
+                    }
+                    // Auto move to next
+                    currentQuestionIndex++;
+                    updateQuestionCounter();
+                    showQuestion();
+                }
+            }, 1000);
+        }
+
+        function updateTimer() {
+            const timerElement = document.getElementById('timer');
+            timerElement.textContent = timeLeft;
+            
+            if (timeLeft <= 7) {
+                timerElement.classList.add('warning');
+            } else {
+                timerElement.classList.remove('warning');
+            }
+        }
+
+        function selectAnswer(index) {
+            // Clear timer
+            clearInterval(timerInterval);
+            
+            // Save answer
+            selectedAnswers[currentQuestionIndex] = index;
+            
+            // Update UI
+            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+            event.target.classList.add('selected');
+
+            // Auto move to next question
+            setTimeout(() => {
+                currentQuestionIndex++;
+                updateQuestionCounter();
+                showQuestion();
+            }, 300); // تأخير بسيط عشان يشوف الطالب الإجابة
+        }
+
+        function goToPrevQuestion() {
+            if (currentQuestionIndex > 0) {
+                clearInterval(timerInterval);
+                currentQuestionIndex--;
+                updateQuestionCounter();
+                showQuestion();
+            }
+        }
+
+        function calculateFinalScore() {
+            score = 0;
+            userAnswers = [];
+            
+            for (let i = 0; i < currentQuestions.length; i++) {
+                const selected = selectedAnswers[i];
+                const isCorrect = selected !== null && selected !== -1 && selected === currentQuestions[i].correct;
+                if (isCorrect) score++;
+                
+                userAnswers.push({
+                    question: currentQuestions[i],
+                    selected: selected !== null && selected !== -1 ? selected : -1,
+                    correct: isCorrect
+                });
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quizScreen').classList.add('hidden');
+            document.getElementById('resultsScreen').classList.remove('hidden');
+
+            const totalQuestions = currentQuestions.length;
+            const finalScore = document.getElementById('finalScore');
+            finalScore.textContent = `${score}/${totalQuestions}`;
+            
+            const percentage = (score / totalQuestions) * 100;
+            document.getElementById('percentage').textContent = percentage.toFixed(1) + '%';
+            
+            const percentageCircle = document.getElementById('percentageCircle');
+            percentageCircle.textContent = Math.round(percentage) + '%';
+            
+            const angle = (percentage / 100) * 360;
+            percentageCircle.style.background = `conic-gradient(#27ae60 0deg, #27ae60 ${angle}deg, #e67e22 ${angle}deg)`;
+
+            const answersReview = document.getElementById('answersReview');
+            answersReview.innerHTML = '<h3 style="margin-bottom: 20px; color: #2c3e50;">📝 مراجعة الإجابات</h3>';
+
+            userAnswers.forEach((item, index) => {
+                const answerDiv = document.createElement('div');
+                answerDiv.className = `answer-item ${item.correct ? 'correct' : 'incorrect'}`;
+                
+                let selectedText = item.selected === -1 ? 'لم تجب' : item.question.options[item.selected];
+                
+                answerDiv.innerHTML = `
+                    <span class="subject-review">${item.question.subject}</span>
+                    <p><strong>سؤال ${index + 1}:</strong> ${item.question.question}</p>
+                    <p><strong>إجابتك:</strong> ${selectedText}</p>
+                    <p><strong>الإجابة الصحيحة:</strong> ${item.question.options[item.question.correct]}</p>
+                `;
+                
+                answersReview.appendChild(answerDiv);
+            });
+        }
+
+        function resetQuiz() {
+            document.getElementById('setupScreen').classList.remove('hidden');
+            document.getElementById('quizScreen').classList.add('hidden');
+            document.getElementById('resultsScreen').classList.add('hidden');
+            
+            if (timerInterval) {
+                clearInterval(timerInterval);
+            }
+        }
+    </script>
+</body>
+</html>
