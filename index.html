@@ -21,7 +21,6 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            position: relative;
         }
 
         .container {
@@ -30,42 +29,33 @@
             background: #ffffff;
             border-radius: 50px;
             padding: 35px;
-            box-shadow: 
-                20px 20px 40px rgba(0, 0, 0, 0.05),
-                -10px -10px 30px rgba(255, 255, 255, 0.8),
-                inset 2px 2px 5px rgba(255, 255, 255, 0.5);
+            box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.05);
             position: relative;
             z-index: 10;
-            border: 1px solid rgba(255, 255, 255, 0.7);
         }
 
         .header {
             text-align: center;
             margin-bottom: 30px;
-            position: relative;
         }
 
         .header h1 {
             font-size: 3.2em;
             font-weight: 800;
             color: #2c3e50;
-            letter-spacing: 1px;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.02);
         }
 
         .game-title {
             font-size: 2.5em;
             font-weight: 800;
             color: #f1c40f;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
             padding: 8px 25px;
             border-radius: 60px;
             display: inline-block;
             border: 2px solid #f1c40f40;
             margin: 10px 0;
             background: #fef9e7;
-            letter-spacing: 1px;
         }
 
         .student-name {
@@ -142,17 +132,58 @@
             text-align: center;
         }
 
-        .note-box p {
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+        .start-btn {
+            background: linear-gradient(145deg, #f1c40f, #f39c12);
+            color: #2c3e50;
+            border: none;
+            padding: 20px 40px;
+            font-size: 2.2em;
+            font-weight: 800;
+            border-radius: 70px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            border: 3px solid #e67e22;
+            box-shadow: 0 10px 0 #d35400, 0 5px 20px rgba(243, 156, 18, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .note-box p::before {
-            content: "📘";
-            font-size: 2em;
+        .start-btn::before {
+            content: "⚡";
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            animation: lightning 1s infinite;
+        }
+
+        .start-btn::after {
+            content: "⚡";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            animation: lightning 1s infinite 0.5s;
+        }
+
+        @keyframes lightning {
+            0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+            50% { opacity: 0.7; transform: translateY(-50%) scale(1.2); }
+        }
+
+        .start-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 0 #d35400, 0 10px 30px rgba(243, 156, 18, 0.6);
+        }
+
+        .start-btn:active {
+            transform: translateY(5px);
+            box-shadow: 0 5px 0 #d35400, 0 5px 20px rgba(243, 156, 18, 0.4);
         }
 
         .quiz-area {
@@ -183,12 +214,6 @@
             color: #e67e22;
             background: #fef5e7;
             border-color: #f9e79f;
-            animation: gentlePulse 1s infinite;
-        }
-
-        @keyframes gentlePulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
         }
 
         .question-text {
@@ -200,7 +225,6 @@
             padding: 15px;
             background: #f8f9fa;
             border-radius: 25px;
-            line-height: 1.6;
         }
 
         .options {
@@ -281,31 +305,6 @@
             cursor: not-allowed;
         }
 
-        .start-btn {
-            background: #f1c40f;
-            color: #2c3e50;
-            border: none;
-            padding: 18px 35px;
-            font-size: 1.8em;
-            font-weight: 700;
-            border-radius: 60px;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.2s;
-            border: 2px solid #f39c12;
-            box-shadow: 0 5px 0 #d4ac0d;
-        }
-
-        .start-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 7px 0 #d4ac0d;
-        }
-
-        .start-btn:active {
-            transform: translateY(4px);
-            box-shadow: 0 1px 0 #d4ac0d;
-        }
-
         .results-section {
             text-align: center;
         }
@@ -338,7 +337,6 @@
             font-weight: 700;
             color: white;
             border: 6px solid white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .answers-review {
@@ -390,7 +388,6 @@
             border-radius: 30px;
             margin: 15px 0;
             overflow: hidden;
-            border: 1px solid #d5dbdb;
         }
 
         .progress-bar {
@@ -432,10 +429,10 @@
                 </div>
                 
                 <div class="note-box">
-                    <p>سوف يظهر لك الموقع أسئلة عشوائية من جميع المواد الوزارية (إنجليزي، عربي، تاريخ، تربية إسلامية)</p>
+                    <p>📚 أسئلة عشوائية من المواد الوزارية الأربعة</p>
                 </div>
 
-                <button class="start-btn" onclick="startQuiz()">🚀 ابدأ التحدي</button>
+                <button class="start-btn" onclick="startQuiz()">ابدأ التحدي</button>
             </div>
         </div>
 
@@ -653,7 +650,7 @@
                 correct: 2,
                 subject: "🇬🇧 إنجليزي"
             },
-            // ARABIC QUESTIONS (56) - SAMPLE
+            // ARABIC QUESTIONS (56)
             {
                 question: "معنى (تُؤْفَكُونَ) في قوله تعالى: ﴿ذَٰلِكُمُ اللَّهُ ۖ فَأَنَّىٰ تُؤْفَكُونَ﴾ هو:",
                 options: ["تُسِيئُونَ إِلَى الْآخَرِينَ", "تُصَدُّونَ عَنِ السَّبِيلِ", "تَرْجُونَ اللهَ تَعَالَى", "تَمْتَنِعُونَ عَنِ المَعَاصِي"],
@@ -684,7 +681,133 @@
                 correct: 1,
                 subject: "🇸🇦 عربي"
             },
-            // ISLAMIC QUESTIONS (40) - SAMPLE
+            {
+                question: "العبارة التي تمثل المقصود بالتعليم المهني من نص (التعليم التقني بوابة المستقبل):",
+                options: ["التعليم النظامي الذي يتضمن الإعداد التربوي وإكساب المهارات والمعرفة المهنية", "أحد السبل الرئيسة لتحريك عجلة الاقتصاد وتجاوز مشكلة البطالة", "يقع في صلب اهتمام الحكومات والمنظمات الدولية والمحلية", "ذو مردود عالٍ إذا كان مرتبطاً بالطلب الفعلي على الوظائف"],
+                correct: 0,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "البيت الشعري الذي يتضمن أثراً من آثار الفتح الإسلامي لمدينة القدس من قصيدة (في فتح بيت المقدس):",
+                options: ["مَنْ رَأى مِنْ كُلِّ المُلُوكِ مَرامَهُ / تَخْفِقُ مَساعيهِ وَيَكْذِبُ وَيَعْثُرُ", "فَلِجَيْشِهِ وَلِعَزْمِهِ مُتَضائلٌ / جَيْشُ الهِرَقْلِ وَعَزْمَةُ الإِسكَنْدَرِ", "فَلَقَدْ وَأَدْتَ الشِّركَ يَوْمَ لَقَيْتَهُمْ / وَغَدَوْتَ لِلإِسْلامِ عَيْنَ المُنْشَرِ", "رُبَّ المَلاحِمِ لَمْ يُؤَرَّخْ مِثْلُها الـ (م) عُلَماءُ قِدْماً في قَديمِ الأَعْصُرِ"],
+                correct: 3,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "المقصود بما تحته خط (فَتَحَ تَطَأطَأُ كُلُّ فَتْحٍ دُونَهُ / والشَّمْسُ تَكْسِفُ كُلَّ جِسْمٍ نَيِّرٍ) من قصيدة (في فتح بيت المقدس):",
+                options: ["عظمة فتح بيت المقدس وفضله على كل الفتوح", "اتساع ساحة المعركة التي نتج عنها فتح بيت المقدس", "شهرة صلاح الدين التي ملأت الآفاق بعد فتحه بيت المقدس", "كثرة عدد جنود الجيش الذي شارك في فتح بيت المقدس"],
+                correct: 0,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "الجذر اللغوي لكلمة (أَسْدَلَه) في البيت (حينَ ارتدى خُضْرَةَ الأَفْنانِ دُكْنَتُها / تَوَشَّحَ الظِّلُّ أَعْطافاً وأَسْدَلَه):",
+                options: ["أَسَد", "سدل", "سده", "أسل"],
+                correct: 1,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "ما تتحدث عنه الشاعرة في البيت (يُصْبِحُ الزِّنْبَقُ الغافي فَيُوقِظُهُ / يَطُوفُ بالذِّكْرِ حيثُ السِّحْرُ أذهلهُ):",
+                options: ["عمق الارتباط بين العصفور والزنبق", "محبة الشاعرة لوطنها وطول غيابها عنه", "الانسجام الكامل بين الشاعرة والعصفور", "ألم الفراق وعذاب البُعد عن الوطن"],
+                correct: 2,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "العبارة التي تدل على سلوك إيجابي من نص (المقامة الجزرية):",
+                options: ["وطويناها ليلةً نابغيةً", "استخرتُ اللهَ في القُفُول", "وأصبحنا نتباكى ونتشاكى", "وآبتْ يدُهُ إلى جَيْبِهِ"],
+                correct: 3,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "مفرد كلمة (الأَزْلام) في عبارة (ولا يُقْسَمُ بالأَزْلامِ، ولا يُرى في المنام):",
+                options: ["الزَّلَم", "الأَزْلَم", "الزُّلَماء", "الزُّلمة"],
+                correct: 1,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "صور الكاتب (الطريق المعبَّد) في العبارة (ما سَيُعَبَّدُ الطَّريقُ ويَرْصِفُهُ لِحِقْبَةٍ مَجيدةٍ في تاريخِ العُلومِ):",
+                options: ["الطريق المعبد مساراً متعرجاً", "مسار العلوم طريقاً معبداً مرصوفاً", "الطريق المعبد تاريخاً قديماً", "رصيف الحقبة المجيدة طريقاً معبداً"],
+                correct: 1,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "نوع التشبيه المفرد في السطرين الشعريين (عندما تفرغ أكياس الطحين / يصبح البذر رغيفاً في عيوني):",
+                options: ["مُرْسَلٌ مُجْمَل", "مُرْسَلٌ مُفَصَّل", "مُؤَكَّدٌ مُفَصَّل", "مُؤَكَّدٌ مُجْمَل"],
+                correct: 0,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "البيت الشعري الذي يتضمن تشبيهاً تمثيلياً:",
+                options: ["والنَّفْسُ كَالطِّفْلِ إِنْ تُهْمِلْهُ شَبَّ عَلَى / حُبِّ الرَّضاعِ وإِنْ تَفْطِمْهُ يَنْفَطِمِ", "وُغِدَتْ تَحُفُّ به الغُصونُ كأنَّها / هُدْبٌ تَحُفُّ بمُقْلَةٍ زَرْقاءِ", "والعُمْرُ كاللَّيْلِ نُحييهِ مُغالطةً / يُشكى من الطُّولِ أو يُشكى من القِصَرِ", "رُبَّ لَيْلٍ كأنَّهُ الصُّبْحُ في الحُسـ / ـنِ وإِنْ كانَ أَسْوَدَ الطَّيْلَسانِ"],
+                correct: 0,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "المثال الذي جاء فيه ضرب الخبر طلبياً:",
+                options: ["﴿خَلَقَ الإِنْسانَ مِنْ صَلْصالٍ كَالفَخَّارِ﴾", "واللهِ، إِنَّكَ لَصاحِبُ عِزٍّ ومَجْدٍ", "إِنَّ المُقاوَمَةَ مَشْروعةٌ ضِدَّ المُحْتَلّين", "على قَدْرِ أَهْلِ العَزْمِ تَأْتي العَزائِمُ"],
+                correct: 2,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "المعنى البلاغي الذي خرج إليه الأمر في البيت (أَريني جَواداً ماتَ هَزْلاً لَعَلَّني / أرى ما تَرَيْنَ أو بخيلاً مُخَلَّدا):",
+                options: ["النُّصْح", "التَّخيير", "التَّعجيز", "التَّهديد"],
+                correct: 2,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "نوع (ما) في البيت (عجبتُ لسَعْيِ الدَّهْرِ بَيْني وبينَها / فلمّا انقضى ما بَيْنَنا سَكَنَ الدَّهْرُ):",
+                options: ["شرطية", "تعجبيّة", "موصولة", "نافية"],
+                correct: 2,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "اسم المفعول من الفعل (صان) في عبارة (صان الجنديُّ أرضَهُ بدَمِهِ):",
+                options: ["مَصان", "مَصون", "مَصين", "مَصيون"],
+                correct: 1,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "المعنى الذي يفيده حرف الجر (مِنْ) في قوله تعالى: ﴿خُذْ مِنْ أَمْوَالِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِمْ بِهَا﴾:",
+                options: ["ابتداء الغاية الزمانيّة", "ابتداء الغاية المكانيّة", "السببيّة", "التَّبعيض"],
+                correct: 3,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "قوله تعالى الذي يتضمن أسباب الاستقرار الاجتماعي والنفسي والأمن الدائم وتطوير المجتمع:",
+                options: ["﴿وَهُوَ الَّذي جَعَلَ لَكُمُ النُّجومَ لِتَهتَدوا بِها﴾", "﴿وَما يُلَقّاها إِلَّا الَّذينَ صَبَروا﴾", "﴿وَلَمَنِ انتَصَرَ بَعدَ ظُلمِهِ فَأُولئِكَ ما عَلَيهِم مِن سَبيلٍ﴾", "﴿يا أَيُّهَا النّاسُ إِنّا خَلَقناكُم مِن ذَكَرٍ وَأُنثى وَجَعَلناكُم شُعوبًا وَقَبائِلَ لِتَعارَفوا﴾"],
+                correct: 3,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "السلوك الذي تدعو إليه الآية الكريمة ﴿وَالَّذِينَ إِذَا أَصَابَهُمُ الْبَغْيُ هُمْ يَنْتَصِرُونَ﴾:",
+                options: ["التناصح في التعامل مع الآخرين", "معاقبة المعتدي على قدر اعتدائه", "العفو والصفح عن المسيء", "الصبر على نوائب الدهر"],
+                correct: 1,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "السطران الشعريان اللذان يتحدث فيهما عبد الله رضوان عن استمرارية حبه لوطنه في قصيدة (وشوشة العاشقين):",
+                options: ["أُحبُّكِ ما وَشْوَشَ الماءُ / واهتَّزَّ غُصْنُ الحياةِ الرَّطيبُ", "أُحبُّكِ يا اسْمَاً تشَكَّلَ / مِنْ تَبْعَةِ الرُّوحِ", "مُزدانةً بالوسامةِ والحبِّ / مملكةً من أهازيج", "كوني كما أَنْتِ / باسِقَةً كالصَّنَوْبَرِ"],
+                correct: 0,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "البيت الشعري من قصيدة (عمان) الذي يخلو من الإشارة إلى ذكريات الشاعر في وطنه:",
+                options: ["عمانُ، يا حلمَ فجرٍ لاحَ واحتجبا / عفوًا إذا مَحَتِ الأيامُ ما كُتبا", "عمانُ، يا زهرةً في كفِّ غانيةٍ / هل تذكرينَ وقد عشنا هوًى وصبا", "يا أختَ عُمري، أنسى أنَّ مجلسنا / في جانب 'السيل' كان المنزلُ الرَّحبا؟", "تخَطَّري، فصباكِ الغضُّ مُنْسَرِحٌ / يضفي على الصُّبْحِ منكَ (الفتنة) العَجبا"],
+                correct: 3,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "الجذر اللغوي لكلمة (تضاؤلاً) في نص (الزهايمر):",
+                options: ["ضلل", "ضيل", "ضأي", "ضؤل"],
+                correct: 3,
+                subject: "🇸🇦 عربي"
+            },
+            {
+                question: "المصطلح الذي يعني (اضطراب عقلي مؤقت يتميز باختلاط أحوال الوعي) من نص (الزهايمر):",
+                options: ["تغير السلوك", "الخرف المتوسط", "الهذيان", "العدائية"],
+                correct: 2,
+                subject: "🇸🇦 عربي"
+            },
+            // ISLAMIC QUESTIONS (40)
             {
                 question: "قول الله تعالى الذي يشير إلى الاعتبار من الأمم السابقة:",
                 options: ["﴿وَاعْتَصِمُوا بِحَبْلِ اللَّهِ جَمِيعًا وَلَا تَفَرَّقُوا﴾", "﴿وَلَا تَكُونُوا كَالَّذِينَ تَفَرَّقُوا وَاخْتَلَفُوا مِنْ بَعْدِ مَا جَاءَهُمُ الْبَيِّنَاتُ﴾", "﴿وَلْتَكُنْ مِنْكُمْ أُمَّةٌ يَدْعُونَ إِلَى الْخَيْرِ﴾", "﴿يَا أَيُّهَا الَّذِينَ آمَنُوا اتَّقُوا اللَّهَ حَقَّ تُقَاتِهِ﴾"],
@@ -709,7 +832,145 @@
                 correct: 0,
                 subject: "🕋 تربية إسلامية"
             },
-            // HISTORY QUESTIONS (80) - SAMPLE
+            {
+                question: "حكم عدول أحد الخاطبين عن الخطبة إذا اعتقد بعدم وجود مصلحة من هذا الزواج:",
+                options: ["واجب", "مندوب", "مباح", "حرام"],
+                correct: 2,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "من صور الجهاد بالمعنى العام:",
+                options: ["القتال في سبيل الله", "دعوة الناس إلى الخير", "بناء المصانع الحربية", "الإعلام والتعبئة المعنوية"],
+                correct: 1,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "من جوانب خدمة القرآن الكريم في زمن الخليفة الراشد علي بن أبي طالب رضي الله عنه:",
+                options: ["جمع القرآن الكريم", "نسخ القرآن الكريم", "ضبط المصحف", "تنقيط الحروف المتشابهة"],
+                correct: 2,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "واحدة من العبارات الآتية صحيحة فيما يتعلق بالعزيمة والرخصة:",
+                options: ["العزيمة هي الأصل والرخصة استثناء", "الرخصة هي الأصل والعزيمة استثناء", "العزيمة والرخصة كلتاهما أصل", "الرخصة لا يجوز تركها إلا لعذر شرعي"],
+                correct: 0,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "سبب معركة مؤتة هو قتل شرحبيل بن عمرو الغساني الصحابي الجليل:",
+                options: ["المغيرة بن شعبة", "الحارث بن عمير", "زيد بن حارثة", "عبد الله بن رواحة"],
+                correct: 1,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "حكم زواج المسلمة من غير المسلم:",
+                options: ["مكروه", "مباح", "مندوب", "حرام"],
+                correct: 3,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "أم المؤمنين التي أشارت على النبي ﷺ يوم الحديبية أن يبدأ بالتحلل من إحرامه:",
+                options: ["خديجة رضي الله عنها", "عائشة رضي الله عنها", "ميمونة رضي الله عنها", "أم سلمة رضي الله عنها"],
+                correct: 3,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "نزل قول الله تعالى: ﴿وَلَا تَحْسَبَنَّ الَّذِينَ قُتِلُوا فِي سَبِيلِ اللَّهِ أَمْوَاتًا...﴾ بعد معركة:",
+                options: ["مؤتة", "أحد", "بدر", "تبوك"],
+                correct: 1,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "المراد بـ 'كثرة السؤال' الوارد في حديث النبي ﷺ: 'إن الله يرضى لكم...'، هو الإكثار من:",
+                options: ["سؤال أهل العلم", "السؤال في غير حاجة", "دعاء الله تعالى", "طلب الدعاء من الناس"],
+                correct: 1,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "سبب عزم النبي ﷺ على فتح مكة:",
+                options: ["إجبار قريش على الدخول في الإسلام", "الانتقام لما حصل للمسلمين في معركة أحد", "استرجاع ما أخذته قريش من المسلمين", "نقض قريش صلح الحديبية"],
+                correct: 3,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "قول الله تعالى الذي يدل على إيجابية الشريعة الإسلامية في نظرتها للحياة:",
+                options: ["﴿قَالَ وَمَنْ يَقْنَطُ مِنْ رَحْمَةِ رَبِّهِ إِلَّا الضَّالُّونَ﴾", "﴿وَمَنْ يُؤْمِنْ بِاللَّهِ يَهْدِ قَلْبَهُ﴾", "﴿فَإِذَا قُضِيَتِ الصَّلَاةُ فَانْتَشِرُوا فِي الْأَرْضِ وَابْتَغُوا مِنْ فَضْلِ اللَّهِ﴾", "﴿وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَى﴾"],
+                correct: 2,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "الترتيب الصحيح للولي عن المرأة في الزواج:",
+                options: ["الأب، الأخ الشقيق، الجد، الأخ لأب", "الأب، الجد، الأخ الشقيق، الأخ لأب", "الأب، الأخ الشقيق، الأخ لأب، الجد", "الأب، الجد، الأخ لأب، الأخ الشقيق"],
+                correct: 1,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "الحكم الشرعي في عمل المرأة وفق الضوابط الشرعية:",
+                options: ["واجب", "مندوب", "مكروه", "مباح"],
+                correct: 3,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "من الأحكام التي وردت في السنة النبوية ولم ترد في القرآن الكريم حرمة:",
+                options: ["الجمع بين المرأة وخالتها", "أكل أموال اليتيم", "الجمع بين المرأة وأختها", "أكل أموال الناس بالباطل"],
+                correct: 0,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "من القواعد الفقهية المستندة إلى العرف:",
+                options: ["الضرورات تبيح المحظورات", "العادة محكمة", "المشقة تجلب التيسير", "لا ضرر ولا ضرار"],
+                correct: 1,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "من الحقوق المشتركة بين الزوجين:",
+                options: ["الإرث", "المهر", "النفقة", "الطاعة"],
+                correct: 0,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "يدل قول الله تعالى: ﴿فَيَغْفِرُ لِمَنْ يَشَاءُ وَيُعَذِّبُ مَنْ يَشَاءُ﴾ على:",
+                options: ["كمال قدرة الله تعالى", "رحمة الله تعالى", "سعة علم الله تعالى", "سعة ملك الله تعالى"],
+                correct: 0,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "من الأمثلة على الإعجاز العلمي في القرآن الكريم:",
+                options: ["القصاص", "تقديم لفظ السارق على السارقة", "المواريث", "أطوار خلق الجنين"],
+                correct: 3,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "من الأوقاف العلمية التي أوقفها جلالة الملك عبد الله الثاني وقفية الإمام السيوطي في:",
+                options: ["مسجد السلط الكبير", "المسجد الحسيني الكبير", "المسجد الأقصى المبارك", "مسجد الحسين بن طلال"],
+                correct: 1,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "من الأحكام الشرعية التي تقع في مرتبة التحسينات:",
+                options: ["نوافل الطاعات", "تحريم السرقة", "مشروعية الزواج", "إباحة الجمع بين الصلوات للمسافر"],
+                correct: 0,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "يشير قول الله تعالى: ﴿وَأَقِمِ الصَّلَاةَ إِنَّ الصَّلَاةَ تَنْهَى عَنِ الْفَحْشَاءِ وَالْمُنْكَرِ﴾، إلى:",
+                options: ["تطبيق العقوبات على مرتكب الجريمة", "معالجة أسباب ارتكاب الجريمة", "تعميق الإيمان بالله تعالى", "تعميق انتماء الفرد إلى وطنه"],
+                correct: 2,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "في قول النبي ﷺ في حجة الوداع: 'ألا كل شيء من أمر الجاهلية تحت قدمي موضوع...'، تأكيد على:",
+                options: ["مبدأ المساواة", "حرمة الربا", "حرمة الثأر", "نبذ الفرقة"],
+                correct: 2,
+                subject: "🕋 تربية إسلامية"
+            },
+            {
+                question: "يدل قول الله تعالى: ﴿هُوَ الَّذِي جَعَلَ لَكُمُ الْأَرْضَ ذَلُولًا فَامْشُوا فِي مَنَاكِبِهَا﴾، على حق الإنسان في:",
+                options: ["التملك", "التعليم", "الحرية", "العمل"],
+                correct: 3,
+                subject: "🕋 تربية إسلامية"
+            },
+            // HISTORY QUESTIONS (80) - عينة
             {
                 question: "تبدأ عصور ما قبل التاريخ من نشأة الإنسان على الأرض حتى:",
                 options: ["بداية استخدام معدن البرونز", "بداية ظهور دويلات المدن", "بداية اختراع الكتابة", "بداية استخدام معدن النحاس"],
@@ -733,16 +994,157 @@
                 options: ["موقعها على الطرق التجارية", "موقعها الحصين بين الجبال", "قربها من ينابيع المياه", "بعدها عن ممالك الآشوريين والبابليين"],
                 correct: 3,
                 subject: "🏛️ تاريخ"
+            },
+            {
+                question: "من أسباب ضعف مملكة الأنباط:",
+                options: ["نقل اليونان مركز التجارة إلى مملكة أدوم", "ضعف بعض ملوك الأنباط", "سيطرة البابليين على الطرق التجارية", "الاحتلال اليوناني لبلاد الشام عام 64 ق.م"],
+                correct: 1,
+                subject: "🏛️ تاريخ"
+            },
+            {
+                question: "الموقع الأثري المتبقي بسبب الحروب والكوارث الطبيعية من آثار الفترة اليونانية في الأردن:",
+                options: ["قصر العبد", "شارع الأعمدة", "المغطس", "قصر البنت"],
+                correct: 0,
+                subject: "🏛️ تاريخ"
+            },
+            {
+                question: "الكنيسة ذات التخطيط البازيليكي، والتي تتمتع بأرضيات فسيفسائية:",
+                options: ["مار إلياس", "كنيسة المعمدان", "أم قيس", "أم الرصاص"],
+                correct: 3,
+                subject: "🏛️ تاريخ"
+            },
+            {
+                question: "ترتيب أمراء الجيش الذي جهّزه الرسول ﷺ في معركة مؤتة:",
+                options: ["زيد بن حارثة، جعفر بن أبي طالب، عبد الله بن رواحة", "عبد الله بن رواحة، جعفر بن أبي طالب، زيد بن حارثة", "جعفر بن أبي طالب، عبد الله بن رواحة، زيد بن حارثة", "زيد بن حارثة، عبد الله بن رواحة، جعفر بن أبي طالب"],
+                correct: 0,
+                subject: "🏛️ تاريخ"
+            },
+            {
+                question: "تُعدّ معركة اليرموك من المعارك الفاصلة في تاريخ بلاد الشام، بسبب:",
+                options: ["حماية طريق الحج الشامي", "فتح مدن بلاد الشام جميعها وانتشار الإسلام فيها", "حماية طريق التجارة إلى شبه الجزيرة العربية", "إنهاء الحكم اليوناني لبلاد الشام"],
+                correct: 1,
+                subject: "🏛️ تاريخ"
+            },
+            {
+                question: "كل ما يأتي من أغراض بناء الأمويين قصوراً لهم في بادية الشام، ما عدا:",
+                options: ["ممارسة هواية الصيد", "الاستجمام والترويح عن النفس", "التواصل مع القبائل العربية الموالية للحكم العباسي", "خدمة الحجاج المسلمين والمسافرين"],
+                correct: 2,
+                subject: "🏛️ تاريخ"
+            },
+            {
+                question: "المنطقة التي اتخذها محمد بن علي مركزاً لدعوته السرية لإحلال بني العباس محل بني أمية:",
+                options: ["أذرح", "القسطل", "الحميمة", "الجرباء"],
+                correct: 2,
+                subject: "🏛️ تاريخ"
+            },
+            {
+                question: "العام الذي حدثت فيه معركة حطين:",
+                options: ["492هـ / 1099م", "583هـ / 1187م", "569هـ / 1173م", "579هـ / 1174م"],
+                correct: 1,
+                subject: "🏛️ تاريخ"
+            },
+            {
+                question: "الكتاب الذي ألفه المؤرخ جمال الدين محمد بن واصل:",
+                options: ["تاريخ مرآة الزمان", "مختصر المهذب في الفقه", "العمدة في صناعة الجراح", "مفرج الكروب في أخبار بني أيوب"],
+                correct: 3,
+                subject: "🏛️ تاريخ"
+            },
+            {
+                question: "يُطلق على الضرائب التي كانت تُفرض على البضائع المستوردة في العصر المملوكي:",
+                options: ["التيمار", "المكوس", "العشور", "الخراج"],
+                correct: 1,
+                subject: "🏛️ تاريخ"
+            },
+            {
+                question: "أبقت الدولة العثمانية على الزعماء المحليين الذين سادوا في العصر المملوكي، بسبب:",
+                options: ["بُعد تلك المناطق عن عاصمة الدولة العثمانية", "معرفة الزعماء المحليين للمنطقة", "انشغال الدولة في حروبها المتتالية في أوروبا", "دخول تلك المناطق في الفوضى وانعدام الأمن"],
+                correct: 0,
+                subject: "🏛️ تاريخ"
+            },
+            {
+                question: "كل ما يأتي من أسباب بناء الخط الحديدي الحجازي، ما عدا:",
+                options: ["نشر العمران حول محطات الخط", "تحصيل المزيد من الضرائب", "منع التمرد والخروج عن طاعة الدولة", "تأمين نقل المحاصيل الزراعية"],
+                correct: 3,
+                subject: "🏛️ تاريخ"
+            },
+            {
+                question: "من عوامل وأسباب قيام الثورة العربية الكبرى عام 1916م:",
+                options: ["احتلال الدول الاستعمارية الأوروبية للبلاد العربية التابعة للدولة العثمانية", "دخول الدولة العثمانية الحرب العالمية الأولى إلى جانب دول الحلفاء", "إقدام السلطان إبراهيم باشا على إعدام عدد من رجالات العرب ومثقفيهم", "تحسّن أوضاع البلاد العربية اقتصادياً واجتماعياً وثقافياً"],
+                correct: 0,
+                subject: "🏛️ تاريخ"
+            },
+            {
+                question: "من الجمعيات العربية التي عبّرت عن موقفها فيما سُمي ميثاق (بروتوكول) دمشق عام 1915م:",
+                options: ["الجمعية العربية الفتاة", "الجمعية القحطانية", "جمعية الإصلاح العربية", "جمعية بيروت الإصلاحية"],
+                correct: 0,
+                subject: "🏛️ تاريخ"
+            },
+            {
+                question: "من قرارات المؤتمر السوري العام 1919م:",
+                options: ["تجزئة البلاد السورية إلى ثلاثة كيانات مستقلة", "استقلال البلاد السورية بحدودها الطبيعية", "اختيار الأمير عبد الله بن الحسين ملكاً دستورياً على البلاد", "القبول بفكرة الانتداب بشرط أن يرمي إلى مساعدة نزيهة للسكان"],
+                correct: 1,
+                subject: "🏛️ تاريخ"
+            },
+            {
+                question: "من سمات الحكومات المحلية في شرقي الأردن (1920-1921م):",
+                options: ["لها صبغة دولية", "تتلقى مساعدات مالية خارجية", "اتصفت بالتعاون والتنسيق فيما بينها", "ذات صبغة عشائرية، مناطقية"],
+                correct: 3,
+                subject: "🏛️ تاريخ"
             }
         ];
 
-        // Shuffle function
-        function shuffleArray(array) {
+        // دالة الخلط المتقدم
+        function shuffleArrayAdvanced(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [array[i], array[j]] = [array[j], array[i]];
             }
+            for (let k = 0; k < 3; k++) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+            }
             return array;
+        }
+
+        // دالة اختيار الأسئلة بشكل متوازن (بدون ما يبان)
+        function selectBalancedQuestions(count) {
+            const englishQs = questionsDatabase.filter(q => q.subject.includes("🇬🇧"));
+            const arabicQs = questionsDatabase.filter(q => q.subject.includes("🇸🇦"));
+            const islamicQs = questionsDatabase.filter(q => q.subject.includes("🕋"));
+            const historyQs = questionsDatabase.filter(q => q.subject.includes("🏛️"));
+            
+            const perSubject = Math.floor(count / 4);
+            let remaining = count - (perSubject * 4);
+            
+            let selectedQuestions = [];
+            
+            selectedQuestions.push(...shuffleArrayAdvanced(englishQs).slice(0, perSubject));
+            selectedQuestions.push(...shuffleArrayAdvanced(arabicQs).slice(0, perSubject));
+            selectedQuestions.push(...shuffleArrayAdvanced(islamicQs).slice(0, perSubject));
+            selectedQuestions.push(...shuffleArrayAdvanced(historyQs).slice(0, perSubject));
+            
+            if (remaining > 0) {
+                const extraPools = [
+                    englishQs.slice(perSubject),
+                    arabicQs.slice(perSubject),
+                    islamicQs.slice(perSubject),
+                    historyQs.slice(perSubject)
+                ];
+                
+                extraPools.forEach(p => shuffleArrayAdvanced(p));
+                
+                for (let i = 0; i < remaining; i++) {
+                    const poolIndex = i % 4;
+                    if (extraPools[poolIndex].length > 0) {
+                        selectedQuestions.push(extraPools[poolIndex][0]);
+                        extraPools[poolIndex].shift();
+                    }
+                }
+            }
+            
+            return shuffleArrayAdvanced(selectedQuestions);
         }
 
         let currentQuestions = [];
@@ -752,7 +1154,7 @@
         let timerInterval;
         let timeLeft = 40;
         let audioContext;
-        let selectedAnswers = []; // لتخزين إجابات المستخدم لكل سؤال
+        let selectedAnswers = [];
 
         function initAudio() {
             if (!audioContext) {
@@ -785,14 +1187,12 @@
                 return;
             }
 
-            // Shuffle all questions and take 'count' of them
-            const shuffledAll = shuffleArray([...questionsDatabase]);
-            currentQuestions = shuffledAll.slice(0, count);
+            currentQuestions = selectBalancedQuestions(count);
             
             currentQuestionIndex = 0;
             score = 0;
             userAnswers = [];
-            selectedAnswers = new Array(count).fill(null); // مصفوفة لتخزين الإجابات المختارة
+            selectedAnswers = new Array(count).fill(null);
 
             document.getElementById('setupScreen').classList.add('hidden');
             document.getElementById('quizScreen').classList.remove('hidden');
@@ -816,10 +1216,7 @@
 
             const question = currentQuestions[currentQuestionIndex];
             
-            // Show subject badge
             document.getElementById('subjectDisplay').textContent = question.subject;
-            
-            // Show question text
             document.getElementById('question').textContent = question.question;
             
             const optionsDiv = document.getElementById('options');
@@ -836,17 +1233,14 @@
                 optionsDiv.appendChild(optionDiv);
             });
 
-            // Update progress bar
             const answeredCount = selectedAnswers.filter(a => a !== null).length;
             const progress = ((answeredCount) / currentQuestions.length) * 100;
             const progressBar = document.getElementById('progressBar');
             progressBar.style.width = progress + '%';
             progressBar.textContent = Math.round(progress) + '%';
 
-            // Update prev button state
             document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
 
-            // Reset and start timer
             if (timerInterval) {
                 clearInterval(timerInterval);
             }
@@ -866,11 +1260,9 @@
 
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
-                    // If no answer selected, mark as wrong
                     if (selectedAnswers[currentQuestionIndex] === null) {
-                        selectedAnswers[currentQuestionIndex] = -1; // علامة للخطأ
+                        selectedAnswers[currentQuestionIndex] = -1;
                     }
-                    // Auto move to next
                     currentQuestionIndex++;
                     updateQuestionCounter();
                     showQuestion();
@@ -890,22 +1282,18 @@
         }
 
         function selectAnswer(index) {
-            // Clear timer
             clearInterval(timerInterval);
             
-            // Save answer
             selectedAnswers[currentQuestionIndex] = index;
             
-            // Update UI
             document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
             event.target.classList.add('selected');
 
-            // Auto move to next question
             setTimeout(() => {
                 currentQuestionIndex++;
                 updateQuestionCounter();
                 showQuestion();
-            }, 300); // تأخير بسيط عشان يشوف الطالب الإجابة
+            }, 300);
         }
 
         function goToPrevQuestion() {
